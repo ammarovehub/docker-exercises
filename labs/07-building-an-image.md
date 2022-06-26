@@ -67,6 +67,7 @@ It is a simple way to automate the image creation process. The best part is that
     ```docker
     RUN apt-get update -y
     RUN apt-get install -y python3 python3-pip python3-dev build-essential
+    RUN pip install Flask
     ```
 
 1. Let's add the files that make up the Flask Application.
@@ -116,6 +117,7 @@ It is a simple way to automate the image creation process. The best part is that
     # Install python and pip
     RUN apt-get update -y
     RUN apt-get install -y python3 python3-pip python3-dev build-essential
+    RUN pip install Flask
 
     # Install Python modules needed by the Python app
     COPY requirements.txt /usr/src/app/
@@ -261,9 +263,8 @@ The next step in this section is to run the image and see if it actually works.
 
 ```bash
 
-$ docker container run -p 8888:5000 --name myfirstapp myfirstapp
- * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
-```
+$ docker container run -d -p 8888:5000 --name myfirstapp myfirstapp
+ 
 
 Head over to `http://localhost:8888` or your server's URL and your app should be live.
 
